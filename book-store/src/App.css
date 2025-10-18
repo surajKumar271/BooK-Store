@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #6a11cb, #2575fc); /* gradient background */
+  color: white;
+  padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* subtle shadow */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.navbar .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.navbar .categories button {
+  margin: 0 5px;
+  padding: 7px 15px;
+  cursor: pointer;
+  background: #fff;
+  color: #2575fc;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar .categories button:hover {
+  background: #2575fc;
+  color: white;
+  transform: scale(1.05);
+}
+
+.navbar input {
+  padding: 7px 15px 7px 35px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 200px;
+  background: #f0f0f0 url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat 10px center;
+  background-size: 18px;
+}
+
+.navbar input:focus {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+
+.main-section {
+  padding: 20px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card img {
+  width: 128px;
+  height: 192px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.footer {
+  background: #1e3a8a;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Optional: place in Navbar.css */
+.logout-btn {
+  padding: 7px 15px;
+  margin-left: 15px;
+  border: none;
+  border-radius: 20px;
+  background: #fff;
+  color: #2575fc;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #2575fc;
+  color: white;
+  transform: scale(1.05);
+}
+
