@@ -1,10 +1,24 @@
 import React from "react";
-//import "./Navbar.css"; // optional if you want separate CSS
+// import "./Navbar.css"; // optional if you want separate CSS
 
 // Categories for navbar
 const categories = ["Fiction", "Science", "Technology", "History", "Business"];
 
-const Navbar = ({ searchTerm, setSearchTerm, setCategory, user, setIsLoggedIn }) => {
+const Navbar = ({
+  searchTerm,
+  setSearchTerm,
+  setCategory,
+  user,
+  setIsLoggedIn,
+  setUser, // ✅ receive setUser from parent
+}) => {
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token from localStorage
+    setIsLoggedIn(false);             // Update login state
+    setUser(null);                    // Clear user info
+  };
+
   return (
     <nav className="navbar">
       {/* Logo */}
@@ -25,17 +39,14 @@ const Navbar = ({ searchTerm, setSearchTerm, setCategory, user, setIsLoggedIn })
         placeholder="Search books..."
         value={searchTerm}
         onChange={(e) => {
-          setCategory("");
+          setCategory("");           // Reset category when searching
           setSearchTerm(e.target.value);
         }}
       />
 
-      {/* Logout button aligned right */}
+      {/* Logout button */}
       {user && (
-        <button
-          className="logout-btn"
-          onClick={() => setIsLoggedIn(false)}
-        >
+        <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
       )}

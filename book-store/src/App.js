@@ -3,7 +3,8 @@ import Navbar from "./components/Navbar";
 import BookCard from "./components/BookCard";
 import BookModal from "./components/BookModal";
 import Footer from "./components/Footer";
-import LoginPage from "./components/LoginPage"; // new
+import LoginPage from "./components/LoginPage";
+import Register from "./components/register"; // import registration page
 import axios from "axios";
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
   const [category, setCategory] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [showRegister, setShowRegister] = useState(false); // toggle between login/register
 
   const fetchBooks = async () => {
     try {
@@ -33,10 +35,17 @@ const App = () => {
   return (
     <div className="app">
       {!isLoggedIn ? (
-        <LoginPage
-          setIsLoggedIn={setIsLoggedIn}
-          setCurrentUser={setCurrentUser}
-        />
+        showRegister ? (
+          <Register
+            onRegistered={() => setShowRegister(false)} // switch to login after registration
+          />
+        ) : (
+          <LoginPage
+            setIsLoggedIn={setIsLoggedIn}
+            setCurrentUser={setCurrentUser}
+            switchToRegister={() => setShowRegister(true)} // allow switching
+          />
+        )
       ) : (
         <>
           <Navbar
@@ -45,8 +54,8 @@ const App = () => {
             setCategory={setCategory}
             user={currentUser}
             setIsLoggedIn={setIsLoggedIn}
+            setUser={setCurrentUser}
           />
-
           <main className="main-section">
             {books.length ? (
               <div className="book-grid">
@@ -62,7 +71,6 @@ const App = () => {
               <p>No books found</p>
             )}
           </main>
-
           {selectedBook && (
             <BookModal
               book={selectedBook}
