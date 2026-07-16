@@ -1,6 +1,8 @@
+//This component is used to display a book card
 import React from "react";
 
 const BookCard = ({ book, onClick }) => {
+  //Get the book information
   const info = book.volumeInfo;
   return (
     <div className="book-card" onClick={onClick}>

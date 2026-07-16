@@ -1,7 +1,9 @@
+//This component is used to display a book modal
 import React from "react";
 
 const BookModal = ({ book, onClose }) => {
   const info = book.volumeInfo;
+  //Get the book information
   const access = book.accessInfo;
   const sale = book.saleInfo;
 
